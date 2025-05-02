@@ -1,10 +1,16 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Aqui você registra as rotas que serão carregadas pelo middleware "web".
+|
+*/
+
+// Faz com que o '/' carregue diretamente a view 'dashboard'
+Route::get('/', [DashboardController::class, 'index'])->name('home');

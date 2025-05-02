@@ -14,8 +14,15 @@ class HandleInertiaRequests extends Middleware
      *
      * @var string
      */
-    protected $rootView = 'app';
+    protected $rootView = 'index';
 
+    protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\HandleInertiaRequests::class,
+        ],
+    ];
+    
+    
     /**
      * Determines the current asset version.
      *
