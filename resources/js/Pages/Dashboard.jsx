@@ -10,7 +10,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-black text-gray-100 font-sans">
       <header className="flex w-full py-6 bg-gray-900 shadow-md fixed top-0 left-0 z-10">
             <SidebarToggleButton onClick={() => setIsSidebarOpen(prev => !prev)} />
-            <div className="container mx-auto flex justify-between items-center">
+            <div className="container mx-auto  flex justify-between items-center">
           <div className="flex items-center">
             <h1 className="text-l font-bold">Bernardo Santos Rolim</h1>
           </div>
