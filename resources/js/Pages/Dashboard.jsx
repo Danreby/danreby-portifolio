@@ -12,7 +12,7 @@ export default function HomePage() {
             <SidebarToggleButton onClick={() => setIsSidebarOpen(prev => !prev)} />
             <div className="container mx-auto  flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-l font-bold">Bernardo Santos Rolim</h1>
+            <h1 className="text-l font-bold">Bernardo Santos Rolimm</h1>
           </div>
           
         </div>
