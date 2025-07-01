@@ -42,7 +42,7 @@ export default function HomePage() {
           <p className="text-gray-400 leading-relaxed">
             Pós-graduado em Desenvolvimento de Jogos e graduado em Sistemas de Informação,
             com experiência em suporte técnico e desenvolvimento de sites. Sou comunicativo,
-            trabalho bem em equipe e estou sempre motivado a aprender novas tecnologias.
+            trabalho bem em equipe e estou sempre motivado a aprender novas tecnologias!
           </p>
         </div>
       </section>
