@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+@tailwind typography;
+@tailwind forms;
+@tailwind aspect-ratio;
+@tailwind line-clamp;
+@tailwind animate;
+@tailwind transition;
+@tailwind filters;
+@tailwind shadows;
+@tailwind gradients;
+@tailwind ring;
+@tailwind backdrop-blur;
+@tailwind container;
+@tailwind space;
