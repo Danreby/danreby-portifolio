@@ -1,37 +1,44 @@
-// src/App.jsx
-import React from "react";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
-import Footer from "./components/Footer";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 
-export default function App() {
+function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800">
-      <Navbar />
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
+      {/* Header with logos */}
+      <div className="flex space-x-6 mb-8">
+        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer" className="transform hover:scale-110 transition">
+          <img src={viteLogo} className="h-20 w-20" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="transform hover:scale-110 transition">
+          <img src={reactLogo} className="h-20 w-20" alt="React logo" />
+        </a>
+      </div>
 
-      <main className="flex-grow">
-        <section
-          id="home"
-          className="flex items-center justify-center py-20 px-6 bg-white text-center"
+      {/* Title */}
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-6">Vite + React + Tailwind</h1>
+
+      {/* Card */}
+      <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-center space-y-4 mb-6">
+        <button
+          onClick={() => setCount((c) => c + 1)}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transform active:scale-95 transition"
         >
-          <Home />
-        </section>
+          count is {count}
+        </button>
+        <p className="text-gray-600 text-center">
+          Edit <code className="bg-gray-200 px-1 rounded">src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
 
-        <section id="projects" className="py-20 px-6">
-          <Projects />
-        </section>
-
-        <section
-          id="contact"
-          className="flex items-center justify-center py-20 px-6 bg-white"
-        >
-          <Contact />
-        </section>
-      </main>
-
-      <Footer />
+      {/* Footer */}
+      <p className="text-gray-500 text-sm">
+        Click on the Vite and React logos to learn more
+      </p>
     </div>
-  );
+  )
 }
+
+export default App
