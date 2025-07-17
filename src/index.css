@@ -46,3 +46,34 @@ html, body{
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes gradientAnimation {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+.findme-led-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    #820082,
+    #6600ff,
+    #010424,
+    #00ffff
+  );
+  background-size: 300% 300%;
+  animation: gradientAnimation 4s linear infinite;
+  filter: blur(3px); 
+  z-index: -1;     
+  
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
