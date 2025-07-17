@@ -35,7 +35,7 @@ export const Contact = () => {
                             <textarea id="message" name="message"  value={formData.message} onChange={(e) =>
                                 setFormData({ ...formData, message: e.target.value })
                             } placeholder="Sua Mensagem" rows={5} className="w-full  my-2 bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"></textarea>
-                            <button type="submit" className="w-full  my-2 bg-blue-500 text-white px-3 py-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]">Enviar</button>
+                            <button type="submit"  className=" w-auto mx-auto my-4 bg-blue-500 text-white px-8 py-3 rounded font-medium block transition hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]">Enviar</button>
                         </div>
                     </form>
                 </div>
