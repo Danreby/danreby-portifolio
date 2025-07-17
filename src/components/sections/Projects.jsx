@@ -6,6 +6,7 @@ export const Projects = () => {
                     Projetos Realizados
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Sistema de Carregamento */}
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50">
                         <h3 className="text-xl font-bold mb-2">Sistema de Carregamento</h3>
                         <p className="text-gray-300 mb-4 break-words">
@@ -23,14 +24,32 @@ export const Projects = () => {
                             <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4"> Ver Projeto ➜ </a>
                         </div>
                     </div>
-
+                    {/* Lista de Funcionários PUC RIO*/}
                     <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50">
-                        <h3 className="text-xl font-bold mb-2">Sistema de Efetivos</h3>
+                        <h3 className="text-xl font-bold mb-2">Lista de Funcionários</h3>
                         <p className="text-gray-300 mb-4 break-words">
-                            Um sistema para gerenciamento de efetivos feito para a conclusão de um dos modulos da pós graduação em Desenvolvimento Full-Stack na PUC RIO.
+                            Um sistema para gerenciamento de funcionários feito para a conclusão de um dos modulos da pós graduação em Desenvolvimento Full-Stack na PUC RIO.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {["Python", "Flask", "HTML", "CSS", "JavaScript"].map((tech, key) => (
+                            <span key={key} className="bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
+                                {tech}
+                            </span>
+                            ))}
+                        </div>
+
+                        <div className="flex justify-between items-center">
+                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4"> Ver Projeto ➜ </a>
+                        </div>
+                    </div>
+                    {/* Sistema de Efetivos */}
+                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50">
+                        <h3 className="text-xl font-bold mb-2">Sistema de Efetivos</h3>
+                        <p className="text-gray-300 mb-4 break-words">
+                            Um sistema para o gerenciamento dos efetivos da Vix Logística, Feito para o gerenciamento e monitoramento das informações necessárias para a admnistração dos funcionários da empresa.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                            {["React", "Lavarel", "MySQL"].map((tech, key) => (
                             <span key={key} className="bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
                                 {tech}
                             </span>
