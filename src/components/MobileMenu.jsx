@@ -1,6 +1,16 @@
 import { useEffect } from "react";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
+
+  const handleScroll = (event, sectionId) => {
+    event.preventDefault();
+    const el = document.getElementById(sectionId);
+    if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setMenuOpen(false);
+  };
+
   return (
     <div
       className={`fixed top-0 left-0 w-full h-full bg-black z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out 

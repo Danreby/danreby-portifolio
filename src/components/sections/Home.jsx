@@ -8,7 +8,6 @@ export const Home = () => {
     if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    setMenuOpen(false);
   };
 
   return (
