@@ -12,19 +12,20 @@ import { FindMe } from "./components/sections/FindMe";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false); 
-  const [menuOpen, setMenuOpen] = useState(false); 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [language, setLanguage] = useState('pt') 
 
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />} {""}
         <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"} bg-black text-gray-100`}>
-          <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+          <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} setLanguage={setLanguage}/>
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-          <Home />
-          <About />
-          <Projects />
-          <FindMe />
-          <Contact />
+          <Home language={language}/>
+          <About language={language}/>
+          <Projects language={language}/>
+          <FindMe language={language}/>
+          <Contact language={language}/>
         </div>
     </>
   )

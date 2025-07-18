@@ -2,7 +2,7 @@ import React from 'react';
 import { RevealOnScroll } from '../RevealOnScroll';
 import '../../index.css'; // Ensure styles are imported
 
-export const FindMe = () => {
+export const FindMe = ({ language }) => {
   const socials = [
     {
       name: 'GitHub',
@@ -42,12 +42,25 @@ export const FindMe = () => {
     },
   ];
 
+  const texts = {
+    pt: {
+      title: 'Encontre-me nas redes',
+
+    },
+    en: {
+      title: 'Find me on the webs',
+
+    }
+  }
+
+  const { title } = texts[language] || texts.pt
+
   return (
     <section id="find-me" className="min-h-screen flex items-center justify-center py-20">
       <RevealOnScroll>
         <div className="relative p-8 rounded-lg findme-led-border mx-auto w-11/12 max-w-4xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            Encontre-me nas redes
+            {title}
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-8">

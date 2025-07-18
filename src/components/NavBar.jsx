@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 
-export const NavBar = ({menuOpen, setMenuOpen}) => {
+export const NavBar = ({menuOpen, setMenuOpen, setLanguage}) => {
 
         useEffect(() => {
             document.body.style.overflow = menuOpen ? "hidden" : "auto";
@@ -15,6 +15,11 @@ export const NavBar = ({menuOpen, setMenuOpen}) => {
             }
             setMenuOpen(false);
         };
+
+        const handleLangChange = (e) => {
+            setLanguage(e.target.value)
+            setMenuOpen(false)
+        }
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10,10,10,0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
@@ -31,6 +36,14 @@ export const NavBar = ({menuOpen, setMenuOpen}) => {
                     <a href="#about" onClick={e => handleScroll(e, 'about')} className="text-gray-300 hover:text-white transition-colors"> Sobre </a>
                     <a href="#projects" onClick={e => handleScroll(e, 'projects')} className="text-gray-300 hover:text-white transition-colors"> Projetos </a>
                     <a href="#contact" onClick={e => handleScroll(e, 'find-me')} className="text-gray-300 hover:text-white transition-colors"> Contato </a>
+                    <select
+                        className="text-gray-300 hover:text-white transition-colors bg-[rgba(10,10,10,0.8)]"
+                        defaultValue="pt"
+                        onChange={handleLangChange}
+                    >
+                        <option value="pt">Português</option>
+                        <option value="en">English</option>
+                    </select>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
 
-export const Contact = () => {
+export const Contact = ({ language }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,6 +27,25 @@ export const Contact = () => {
       );
   };
 
+  const texts = {
+    pt: {
+      title: 'Entre em Contato',
+      name: 'Seu Nome',
+      email: 'example@gmail.com',
+      message: 'Sua Mensagem',
+      send: 'Enviar'
+    },
+    en: {
+      title: 'Get in Touch',
+      name: 'Your Name',
+      email: 'example@hotmail.com',
+      message: 'Your Message',
+      send: 'Send'
+    }
+  }
+
+  const { title, name, email, message, send } = texts[language] || texts.pt
+
   return (
     <section
       id="contact"
@@ -35,7 +54,7 @@ export const Contact = () => {
       <RevealOnScroll>
         <div className="w-full max-w-lg">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            Entre em Contato
+            {title}
           </h2>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <input
@@ -46,7 +65,7 @@ export const Contact = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              placeholder="Seu Nome"
+              placeholder={name}
               required
               maxLength={255}
               className="w-full bg-white/5 border border-white/10 rounded px-3 py-2 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
@@ -60,7 +79,7 @@ export const Contact = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              placeholder="example@gmail.com"
+              placeholder={email}
               required
               maxLength={255}
               className="w-full bg-white/5 border border-white/10 rounded px-3 py-2 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
@@ -73,7 +92,7 @@ export const Contact = () => {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              placeholder="Sua Mensagem"
+              placeholder={message}
               rows={5}
               maxLength={255}
               className="w-full bg-white/5 border border-white/10 rounded px-3 py-2 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
@@ -83,7 +102,7 @@ export const Contact = () => {
               type="submit"
               className="w-full sm:w-auto mx-auto block bg-blue-500 text-white px-6 py-2 rounded font-medium transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Enviar
+              {send}
             </button>
           </form>
         </div>
