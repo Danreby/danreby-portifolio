@@ -48,6 +48,7 @@ export const Contact = () => {
               }
               placeholder="Seu Nome"
               required
+              maxLength={255}
               className="w-full bg-white/5 border border-white/10 rounded px-3 py-2 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
             />
 
@@ -61,6 +62,7 @@ export const Contact = () => {
               }
               placeholder="example@gmail.com"
               required
+              maxLength={255}
               className="w-full bg-white/5 border border-white/10 rounded px-3 py-2 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
             />
 
@@ -73,6 +75,7 @@ export const Contact = () => {
               }
               placeholder="Sua Mensagem"
               rows={5}
+              maxLength={255}
               className="w-full bg-white/5 border border-white/10 rounded px-3 py-2 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
             />
 
