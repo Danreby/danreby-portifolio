@@ -28,7 +28,20 @@ export const About = ({ language }) => {
     }
   }
 
+  const languagesPt = [
+    { name: "Português", level: 3 },
+    { name: "Inglês",   level: 2 }
+  ];
+  const languagesEn = [
+    { name: "Portuguese", level: 3 },
+    { name: "English",    level: 2 }
+  ];
+  const maxLevel = 3;
   const { title, subtitle, formation, formation1, formation2, experience, experience1, role} = texts[language] || texts.pt
+  const levelsPt = ["Básico", "Intermediário", "Avançado", "Fluente"];
+  const levelsEn = ["Basic", "Intermediate", "Advanced", "Fluent"];
+  const languages = language === "en" ? languagesEn : languagesPt;
+  const levels    = language === "en" ? levelsEn    : levelsPt;
 
   return (
     <section id="about" className="min-h-screen flex items-center justify-center py-20">
@@ -56,6 +69,34 @@ export const About = ({ language }) => {
                             </span>
                         ))}</div>
                     </div>
+                </div>
+            </div>
+            <div className="rounded-xl p-6 mt-8 border border-white/10">
+                <h3 className="text-xl font-bold mb-6">
+                {language === "en" ? "Languages" : "Línguas"}
+                </h3>
+                <div className="space-y-8">
+                {languages.map(({ name, level }, idx) => (
+                    <div key={idx} className="flex flex-col">
+                        <span className="text-gray-300 font-semibold mb-3">{name}</span>
+                        <div className="relative flex items-center justify-between px-2.5 h-5">
+                            <div className="absolute top-1/2 h-1 bg-blue-500/10 rounded-full -translate-y-1/2"
+                            style={{ left: 10, right: 20 }}/>
+                            <div className="absolute top-1/2 h-1 bg-blue-500 rounded-full -translate-y-1/2"
+                            style={{ width: `${(level / maxLevel) * 95}%` }}/>
+                            {[...Array(maxLevel + 1)].map((_, i) => (
+                            <div key={i} className="group relative flex items-center justify-center">
+                                <div className={`w-5 h-5 rounded-full border transition-transform
+                                    ${i <= level ? "bg-blue-500 border-blue-400" : "bg-blue-500/10 border-white/20"}
+                                    group-hover:scale-150`}/>
+                                <span className="absolute top-full mt-1 text-xs text-gray-300 opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                                {levels[i]}
+                                </span>
+                            </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">

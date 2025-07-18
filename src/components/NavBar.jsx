@@ -27,12 +27,16 @@ export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
             about: 'Sobre',
             projects: 'Projetos',
             contact: 'Contato',
+            // pt: 'Português',
+            // en: 'Inglês'
         },
         en: {
             home: 'Home',
             about: 'About',
             projects: 'Projects',
             contact: 'Contact',
+            // pt: 'Portuguese',
+            // en: 'English'
         }
     }
 
