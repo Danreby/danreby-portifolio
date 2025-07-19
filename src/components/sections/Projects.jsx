@@ -15,36 +15,35 @@ export const Projects = ({ language }) => {
                     description: 'Um sistema para o gerenciamento dos carregametos da Vix Logística, feito com o propósito de monitorar e analisar o fluxo de cargas que entram e saem do parque de tubos da Petrobras.',
                     technologies: ['React', 'Laravel', 'MySQL'],
                     images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/2.jpg',
+                        '/danreby-portifolio/img/Efetivo/1.jpeg',
+                        '/danreby-portifolio/img/Efetivo/2.jpeg',
+                        '/danreby-portifolio/img/Efetivo/3.jpeg',
+                        '/danreby-portifolio/img/Efetivo/4.jpeg',
+                        '/danreby-portifolio/img/Efetivo/5.jpeg',
+                        '/danreby-portifolio/img/Efetivo/6.jpeg',
+                        '/danreby-portifolio/img/Efetivo/7.jpeg',
+                        '/danreby-portifolio/img/Efetivo/8.jpeg',
+                        '/danreby-portifolio/img/Efetivo/9.jpeg',
+                        '/danreby-portifolio/img/Efetivo/10.jpeg',
+                        '/danreby-portifolio/img/Efetivo/11.jpeg',
+                        '/danreby-portifolio/img/Efetivo/12.jpeg',
                     ],
                 },
                 {
                     title: 'Lista de Funcionários',
                     description: 'Um sistema para gerenciamento de funcionários feito para a conclusão de um dos módulos da pós-graduação em Desenvolvimento Full-Stack na PUC RIO.',
                     technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    ],
+                    
                 },
                 {
                     title: 'Sistema de Efetivos',
                     description: 'Um sistema para o gerenciamento dos efetivos da Vix Logística, feito para o gerenciamento e monitoramento das informações necessárias para a administração dos funcionários da empresa.',
                     technologies: ['React', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    ],
                 },
                 {
                     title: 'Sistema de Avaliações',
                     description: 'Um sistema de avaliações de serviços prestados de uma empresa terceirizada da Petrobras, com o intuito de ajudar no processo de avaliações de funcionários.',
                     technologies: ['Filament', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    ],
                 }
             ]
         },
@@ -55,38 +54,21 @@ export const Projects = ({ language }) => {
                     title: 'Loading System',
                     description: 'A system for managing load operations at Vix Logística, designed to monitor and analyze the flow of cargo entering and leaving the Petrobras pipe yard.',
                     technologies: ['React', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    
-                    ],
                 },
                 {
                     title: 'Employee List',
                     description: 'A system for employee management developed as part of a module for the Postgraduate Full-Stack Development program at PUC-Rio.',
                     technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    ],
                 },
                 {
                     title: 'Staff Management System',
                     description: 'A system for managing Vix Logística\'s staff, built to manage and monitor essential information for employee administration within the company.',
                     technologies: ['React', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    ],
                 },
                 {
                     title: 'Evaluation System',
                     description: 'A service evaluation system for a Petrobras subcontractor, aimed at streamlining the employee evaluation process.',
                     technologies: ['Filament', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                        '/danreby-portifolio/img/Avalia/1.jpg',
-                    ],
                 }
             ]
         }
@@ -120,12 +102,14 @@ export const Projects = ({ language }) => {
                                     ))}
                                 </div>
                                 <div className="flex justify-between items-center">
-                <button
-                  onClick={() => openOverview(project)}
-                  className="text-blue-400 hover:text-blue-300 transition-colors mt-4"
-                >
-                  {language === 'pt' ? 'Ver Projeto ➜' : 'View Project ➜'}
-                </button>
+                                    {project.images?.length > 0 && (
+                                    <button
+                                    onClick={() => openOverview(project)}
+                                    className="text-blue-400 hover:text-blue-300 transition-colors mt-4"
+                                    >
+                                    {language === 'pt' ? 'Ver Projeto ➜' : 'View Project ➜'}
+                                    </button>
+                                    )}
                                 </div>
                             </div>
                         ))}

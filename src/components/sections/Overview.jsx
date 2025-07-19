@@ -9,18 +9,15 @@ export const Overview = ({ isOpen, onClose, project }) => {
   const [direction, setDirection] = useState("next");
   const timeoutRef = useRef(null);
 
-  // Handle fade-in and fade-out timing
   useEffect(() => {
     if (isOpen) {
       setShowModal(true);
     } else {
-      // Wait for fade-out before unmounting
       const timer = setTimeout(() => setShowModal(false), 500);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
-  // Prevent body scroll
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     if (!isOpen) {
@@ -65,7 +62,7 @@ export const Overview = ({ isOpen, onClose, project }) => {
       onClick={onClose}
     >
       <div
-        className={`relative bg-gray-950 rounded-2xl p-6 max-w-[820px] w-full transform transition-all duration-500 ease-in-out ${
+        className={`relative bg-gray-950 rounded-2xl p-6 max-w-250 w-full transform transition-all duration-500 ease-in-out ${
           isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -139,9 +136,9 @@ export const Overview = ({ isOpen, onClose, project }) => {
           >›</button>
         </div>
 
-        <div className="text-center mt-6">
+        {/* <div className="text-center mt-6">
           texts
-        </div>
+        </div> */}
 
         <div className="mt-4 flex justify-center space-x-2">
           {project.images.map((_, i) => (
