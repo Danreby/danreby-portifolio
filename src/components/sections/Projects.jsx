@@ -14,6 +14,18 @@ export const Projects = ({ language }) => {
                     title: 'Sistema de Carregamento',
                     description: 'Um sistema para o gerenciamento dos carregametos da Vix Logística, feito com o propósito de monitorar e analisar o fluxo de cargas que entram e saem do parque de tubos da Petrobras.',
                     technologies: ['React', 'Laravel', 'MySQL'],
+
+                },
+                {
+                    title: 'Lista de Funcionários',
+                    description: 'Um sistema para gerenciamento de funcionários feito para a conclusão de um dos módulos da pós-graduação em Desenvolvimento Full-Stack na PUC RIO.',
+                    technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
+                    
+                },
+                {
+                    title: 'Sistema de Efetivos',
+                    description: 'Um sistema para o gerenciamento dos efetivos da Vix Logística, feito para o gerenciamento e monitoramento das informações necessárias para a administração dos funcionários da empresa.',
+                    technologies: ['React', 'Laravel', 'MySQL'],
                     images: [
                         '/danreby-portifolio/img/Efetivo/1.jpeg',
                         '/danreby-portifolio/img/Efetivo/2.jpeg',
@@ -28,17 +40,6 @@ export const Projects = ({ language }) => {
                         '/danreby-portifolio/img/Efetivo/11.jpeg',
                         '/danreby-portifolio/img/Efetivo/12.jpeg',
                     ],
-                },
-                {
-                    title: 'Lista de Funcionários',
-                    description: 'Um sistema para gerenciamento de funcionários feito para a conclusão de um dos módulos da pós-graduação em Desenvolvimento Full-Stack na PUC RIO.',
-                    technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
-                    
-                },
-                {
-                    title: 'Sistema de Efetivos',
-                    description: 'Um sistema para o gerenciamento dos efetivos da Vix Logística, feito para o gerenciamento e monitoramento das informações necessárias para a administração dos funcionários da empresa.',
-                    technologies: ['React', 'Laravel', 'MySQL'],
                 },
                 {
                     title: 'Sistema de Avaliações',
