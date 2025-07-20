@@ -15,6 +15,9 @@ export const About = ({ language }) => {
       experience: 'Experiência',
       experience1: 'Assistente de Dados I - Vix Logística (2025 - Atual)',
       role: 'Desenvolvimento de sistemas para o auxílio e otimização dos processos dos funcionários da Vix Logística, e da Petrobras',
+      course: 'Cursos',
+      course1: 'Escola Técnica de Gwinnett (Curso de Inglês)',
+      course2: 'Brasas English Course',
     },
     en: {
       title:'About Me',
@@ -25,6 +28,9 @@ export const About = ({ language }) => {
       experience: 'Experience',
       experience1: 'Data Assistant I - Vix Logística (2025 - Present)',
       role: 'Development of internal systems aimed at supporting and optimizing the operational workflows of employees at Vix Logística and Petrobras.',
+      course: 'Courses',
+      course1: 'Gwinnett Technical College (English Course)',
+      course2: 'Brasas English Course',
     }
   }
 
@@ -37,7 +43,7 @@ export const About = ({ language }) => {
     { name: "English",    level: 2 }
   ];
   const maxLevel = 3;
-  const { title, subtitle, formation, formation1, formation2, experience, experience1, role} = texts[language] || texts.pt
+  const { title, subtitle, formation, formation1, formation2, experience, experience1, role, course, course1, course2} = texts[language] || texts.pt
   const levelsPt = ["Básico", "Intermediário", "Avançado", "Fluente"];
   const levelsEn = ["Basic", "Intermediate", "Advanced", "Fluent"];
   const languages = language === "en" ? languagesEn : languagesPt;
@@ -119,6 +125,19 @@ export const About = ({ language }) => {
                             <p>
                                 {role}
                             </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
+                    <h3 className="text-xl font-bold mb-4">📚 {course}</h3>
+                    <div className="space-y-4 text-gray-300">
+                        <div>
+                            <li>
+                                <strong> {course1} </strong> - (05/2025 - 08/2025)
+                            </li>
+                            <li>
+                                <strong> {course2} </strong> - (01/2024 - 04/2025)
+                            </li>
                         </div>
                     </div>
                 </div>
