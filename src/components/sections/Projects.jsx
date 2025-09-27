@@ -11,10 +11,10 @@ export const Projects = ({ language }) => {
             title: 'Projetos',
             projects: [
                 {
-                    title: 'Sistema de Carregamento',
-                    description: 'Um sistema para o gerenciamento dos carregametos da Vix Logística, feito com o propósito de monitorar e analisar o fluxo de cargas que entram e saem do parque de tubos da Petrobras.',
-                    technologies: ['React', 'Laravel', 'MySQL'],
-
+                    title: 'Catálogo de Jogos',
+                    description: 'Um catálogo de jogos para o gerênciamento e organização de jogos pessoais. Desenvolvido como projeto acadêmico para a conclusão do modulo de Back-End Avançado em minha 2º pós-graduação na PUC-RIO',
+                    technologies: ['ReactJS', 'Python', 'MySQL', 'Docker'],
+                    url: 'https://youtu.be/wUAtUlpYEI4',
                 },
                 {
                     title: 'Lista de Funcionários',
@@ -25,7 +25,7 @@ export const Projects = ({ language }) => {
                 {
                     title: 'Sistema de Efetivos',
                     description: 'Um sistema para o gerenciamento dos efetivos da Vix Logística, feito para o gerenciamento e monitoramento das informações necessárias para a administração dos funcionários da empresa.',
-                    technologies: ['React', 'Laravel', 'MySQL'],
+                    technologies: ['ReactJS', 'Laravel', 'MySQL'],
                     images: [
                         '/danreby-portifolio/img/Efetivo/pt/1.jpeg',
                         '/danreby-portifolio/img/Efetivo/pt/2.jpeg',
@@ -52,9 +52,10 @@ export const Projects = ({ language }) => {
             title: 'Projects',
             projects: [
                 {
-                    title: 'Loading System',
-                    description: 'A system for managing load operations at Vix Logística, designed to monitor and analyze the flow of cargo entering and leaving the Petrobras pipe yard.',
-                    technologies: ['React', 'Laravel', 'MySQL'],
+                    title: 'Game Catalog',
+                    description: 'A games catalog for managing and organizing a personal game collection. Developed as an academic project to complete the Advanced Back-End module of my second postgraduate program at PUC-Rio.',
+                    technologies: ['ReactJS', 'Python', 'MySQL', 'Docker'],
+                    url: 'https://youtu.be/wUAtUlpYEI4',
                 },
                 {
                     title: 'Employee List',
@@ -64,7 +65,7 @@ export const Projects = ({ language }) => {
                 {
                     title: 'Staff Management System',
                     description: 'A system for managing Vix Logística\'s staff, built to manage and monitor essential information for employee administration within the company.',
-                    technologies: ['React', 'Laravel', 'MySQL'],
+                    technologies: ['ReactJS', 'Laravel', 'MySQL'],
                     images: [
                         '/danreby-portifolio/img/Efetivo/en/1.jpg',
                         '/danreby-portifolio/img/Efetivo/en/2.jpg',
@@ -92,10 +93,24 @@ export const Projects = ({ language }) => {
     const { title, projects } = texts[language] || texts.pt;
 
     const openOverview = (project) => {
+        if (project.images && project.images.length > 0) {
+            setSelected({ ...project, language });
+            setIsOpen(true);
+            return;
+        }
+
+        if (project.url) {
+            window.open(project.url, "_blank", "noopener,noreferrer");
+            return;
+        }
+
         setSelected({ ...project, language });
         setIsOpen(true);
     };
-  const closeOverview = () => setIsOpen(false);
+    const closeOverview = () => {
+        setIsOpen(false);
+        setSelected(null);
+    };
 
     return (
         <section id="projects" className="min-h-screen flex items-center justify-center py-20">
@@ -106,25 +121,38 @@ export const Projects = ({ language }) => {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {projects.map((project, index) => (
-                            <div key={index} className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50">
-                                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                                <p className="text-gray-300 mb-4 break-words">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
+                            <div
+                            key={index}
+                            className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50
+                                        flex flex-col justify-between h-full" 
+                            >
+                                <div>
+                                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                    <p className="text-gray-300 mb-4 break-words">{project.description}</p>
+                                </div>
+
+                                <div>
+                                    <div className="flex flex-wrap gap-2 mb-4">
                                     {project.technologies.map((tech, key) => (
-                                        <span key={key} className="bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all">
-                                            {tech}
+                                        <span
+                                        key={key}
+                                        className="bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all"
+                                        >
+                                        {tech}
                                         </span>
                                     ))}
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    {project.images?.length > 0 && (
-                                    <button
-                                    onClick={() => openOverview(project)}
-                                    className="text-blue-400 hover:text-blue-300 transition-colors mt-4"
-                                    >
-                                    {language === 'pt' ? 'Ver Projeto ➜' : 'View Project ➜'}
-                                    </button>
+                                    </div>
+
+                                    <div className="flex justify-between items-center">
+                                    {(project.images?.length > 0 || project.url) && (
+                                        <button
+                                        onClick={() => openOverview(project)}
+                                        className="text-blue-400 hover:text-blue-300 transition-colors"
+                                        >
+                                        {language === "pt" ? "Ver Projeto ➜" : "View Project ➜"}
+                                        </button>
                                     )}
+                                    </div>
                                 </div>
                             </div>
                         ))}
