@@ -2,13 +2,13 @@ import { RevealOnScroll } from "../RevealOnScroll";
 
 export const About = ({ language }) => {
 
-    const frontendSkills = ["React", "Vue.js", "JavaScript", "Tailwind CSS", "Bootstrap"];
-    const backendSkills = ["Laravel", "PHP", "Node.js", "MySQL", "SQLServer", "Python"];
+    const frontendSkills = ["ReactJS", "Vue.js", "JavaScript", "Tailwind CSS", "Bootstrap"];
+    const backendSkills = ["Laravel", "PHP", "Docker", "MySQL", "SQLServer", "Python"];
 
     const texts = {
     pt: {
       title:'Sobre mim',
-      subtitle: 'Sou um jovem desenvolvedor estusiasta no mundo da programação e com um longo caminho a percorrer para alcançar meus objetivos. Minhas habilidades flutuam entre o front-end e o back-end,colocando-as em sinergia para criar aplicações e sistemas web. Minha vontade é de conseguir melhorar minhas capacidades ao maximo e me tornar o melhor de mim nos mais diversos aspectos.',
+      subtitle: 'Sou um jovem desenvolvedor estusiasta no mundo da programação e com um longo caminho a percorrer para alcançar meus objetivos. Minhas habilidades flutuam entre o front-end e o back-end,colocando-as em sinergia para criar aplicações e sistemas web. Minha vontade é de conseguir melhorar minhas capacidades ao maximo e me tornar o melhor de mim nos mais diversos aspectos. Atualmente cursando minha 2º pós graduação',
       formation: 'Formação',
       formation1: 'Pós Graduação em Desenvolvimento Full-Stack',
       formation2: 'Graduação em Sistemas da Informação',
@@ -21,7 +21,7 @@ export const About = ({ language }) => {
     },
     en: {
       title:'About Me',
-      subtitle: 'I am a young and enthusiastic developer in the world of programming, with a long journey ahead to achieve my goals. My skills range from front-end to back-end, combining both in synergy to create web applications and systems. My goal is to continuously improve my abilities to the fullest and become the best version of myself in every possible way.',
+      subtitle: 'I am a young and enthusiastic developer in the world of programming, with a long journey ahead to achieve my goals. My skills range from front-end to back-end, combining both in synergy to create web applications and systems. My goal is to continuously improve my abilities to the fullest and become the best version of myself in every possible way. Currently pursuing my second postgraduate degree.',
       formation: 'Education',
       formation1: 'Postgraduate Certificate in Full-Stack Development',
       formation2: 'BSc in Information Systems ',
