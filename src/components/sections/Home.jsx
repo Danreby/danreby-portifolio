@@ -28,14 +28,15 @@ export const Home = ({ language }) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
       <RevealOnScroll>
-        <div className="text-center z-10 px-4">
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-right uppercase">
-              Bernardo Santos Rolim
-          </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-              {subtitle}
-          </p>
-          <div className="flex justify-center space-x-4">
+        <div className="text-center justify-center items-center z-10 px-4 grid grid-cols-2 gap-6">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-right uppercase">
+            <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-right uppercase">
+                Bernardo Santos Rolim
+            </h1>
+            <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
+                {subtitle}
+            </p>
+            <div className="flex justify-center space-x-4">
               <a href="#projects" onClick={e => handleScroll(e, 'projects')} className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden
               hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)]">
                 {projects}
@@ -44,6 +45,16 @@ export const Home = ({ language }) => {
               hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10">
                 {contact}
               </a>
+            </div>
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="w-96 h-96 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] overflow-hidden">
+              <img 
+                src="/danreby-portifolio/img/profile3.jpeg"
+                alt="Bernardo Santos Rolim" 
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </RevealOnScroll>

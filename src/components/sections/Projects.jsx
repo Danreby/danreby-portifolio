@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
-import { Overview } from "./Overview";
+import { Overview } from "../system/modal/Overview";
 
 export const Projects = ({ language }) => {
     const [selected, setSelected] = useState(null);
