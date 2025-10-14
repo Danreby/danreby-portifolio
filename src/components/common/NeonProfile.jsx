@@ -5,6 +5,7 @@ export default function NeonProfile({
   imageSrc,
   alt = '',
   size = 384,
+  sizeClass = '',
   ringColors = ['#00F5FF', '#8A2BE2', '#FF2D95'],
   className = ''
 }) {
@@ -20,7 +21,8 @@ export default function NeonProfile({
     }
   }, [])
 
-  const px = `${size}px`
+  const isSizeClass = typeof sizeClass === 'string' && sizeClass.trim().length > 0
+  const numericSize = typeof size === 'number' ? `${size}px` : (typeof size === 'string' ? size : null)
 
   const ringVariants = (delay = 0, duration = 6) => ({
     animate: {
@@ -38,15 +40,15 @@ export default function NeonProfile({
 
   return (
     <div
-      style={{ width: px, height: px }}
-      className={`relative ${className} flex items-center justify-center`}
+      style={!isSizeClass && numericSize ? { width: numericSize, height: numericSize } : undefined}
+      className={`relative ${className} ${isSizeClass ? `${sizeClass} aspect-square` : 'flex items-center justify-center'}`}
       aria-hidden={false}
     >
       <div className="relative rounded-full overflow-hidden w-full h-full shadow-2xl">
         <img
           src={imageSrc}
           alt={alt}
-          className="w-full h-full object-cover block"
+          className="w-full h-full object-cover block rounded-full"
           draggable={false}
         />
 
@@ -62,13 +64,13 @@ export default function NeonProfile({
       </div>
 
       {ringColors.map((color, i) => {
-        const inset = -6 - i * 10
-        const blur = 6 + i * 6
+        const insetPercent = -4 - i * 3 
+        const blur = 6 + i * 6 
         const sizeStyle = {
-          top: `${inset}px`,
-          left: `${inset}px`,
-          right: `${inset}px`,
-          bottom: `${inset}px`
+          top: `${insetPercent}%`,
+          left: `${insetPercent}%`,
+          right: `${insetPercent}%`,
+          bottom: `${insetPercent}%`
         }
         const ringStyle = {
           ...sizeStyle,
@@ -79,14 +81,16 @@ export default function NeonProfile({
           border: '1px solid rgba(255,255,255,0.03)'
         }
 
+        const variants = ringVariants(i * 0.6, 8 + i * 3)
+
         return (
           <motion.div
-            key={color}
+            key={color + i}
             className="absolute rounded-full pointer-events-none"
             style={ringStyle}
             initial={false}
-            animate={prefersReducedMotion ? {} : ringVariants(i * 0.6, 8 + i * 3).animate}
-            transition={prefersReducedMotion ? {} : ringVariants(i * 0.6, 8 + i * 3).transition}
+            animate={prefersReducedMotion ? {} : variants.animate}
+            transition={prefersReducedMotion ? {} : variants.transition}
           />
         )
       })}
