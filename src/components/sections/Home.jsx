@@ -1,12 +1,12 @@
+import NeonProfile from "../common/NeonProfile";
 import { RevealOnScroll } from "../RevealOnScroll";
 
 export const Home = ({ language }) => {
-
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
     const el = document.getElementById(sectionId);
     if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -28,33 +28,40 @@ export const Home = ({ language }) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
       <RevealOnScroll>
-        <div className="text-center justify-center items-center z-10 px-4 grid grid-cols-2 gap-6">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-right uppercase">
-            <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-right uppercase">
-                Bernardo Santos Rolim
+        <div className="mt-20 md:mt-0 w-full px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="text-center md:text-center">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent uppercase">
+              Bernardo Santos Rolim
             </h1>
-            <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                {subtitle}
+            <p className="text-gray-400 text-base md:text-lg mb-6 max-w-xl mx-auto md:mx-0">
+              {subtitle}
             </p>
-            <div className="flex justify-center space-x-4">
-              <a href="#projects" onClick={e => handleScroll(e, 'projects')} className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden
-              hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)]">
+
+            <div className="flex flex-row flex-wrap justify-center items-center gap-3">
+              <a
+                href="#projects"
+                onClick={e => handleScroll(e, 'projects')}
+                className="inline-block bg-blue-500 text-white py-2 px-4 sm:py-3 sm:px-6 rounded font-medium transition transform hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+              >
                 {projects}
               </a>
-              <a href="#find-me" onClick={e => handleScroll(e, 'find-me')} className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200
-              hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10">
+
+              <a
+                href="#find-me"
+                onClick={e => handleScroll(e, 'find-me')}
+                className="inline-block border border-blue-500/50 text-blue-500 py-2 px-4 sm:py-3 sm:px-6 rounded font-medium transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10"
+              >
                 {contact}
               </a>
             </div>
           </div>
+
           <div className="flex items-center justify-center">
-            <div className="w-96 h-96 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] overflow-hidden">
-              <img 
-                src="/danreby-portifolio/img/profile3.jpeg"
-                alt="Bernardo Santos Rolim" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <NeonProfile
+              imageSrc="/danreby-portifolio/img/profile3.jpeg"
+              alt="Bernardo Santos Rolim"
+              sizeClass="w-60 sm:w-48 md:w-72 lg:w-96 border-4 border-white/20 sm:p-0 rounded-none sm:rounded-full"
+            />
           </div>
         </div>
       </RevealOnScroll>
