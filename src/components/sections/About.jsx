@@ -133,10 +133,10 @@ export const About = ({ language }) => {
                     <div className="space-y-4 text-gray-300">
                         <div>
                             <li>
-                                <strong> {course1} </strong> - (05/2025 - 08/2025)
+                                <strong> {course1} </strong> - (05/2024 - 08/2024)
                             </li>
                             <li>
-                                <strong> {course2} </strong> - (01/2024 - 04/2025)
+                                <strong> {course2} </strong> - (01/2023 - 04/2024)
                             </li>
                         </div>
                     </div>
