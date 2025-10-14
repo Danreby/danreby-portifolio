@@ -1,34 +1,26 @@
 @import "tailwindcss";
 
-html, body{
+html, body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
   background-color: #0a0a0a;
   color: #f3f4f6;
 }
-  
+
 @layer utilities {
   @keyframes blink {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   .animate-blink {
     animation: blink 0.8s step-end infinite;
   }
-  
+
   @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(250%);
-    }
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(250%); }
   }
 
   .animate-loading-bar {
@@ -36,16 +28,55 @@ html, body{
   }
 }
 
-.reveal{
+.reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
-.reveal.visible{
+.reveal-inner {
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1), 
+              filter 0.35s ease, 
+              opacity 0.35s ease;
+  transform-origin: center top;
+  transform: scale3d(1, 1, 1);
+  filter: none;
+  will-change: transform, filter, opacity;
+}
+
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+.reveal.visible .reveal-inner {
+  transform: scale3d(1, 1, 1);
+  filter: none;
+  opacity: 1;
+}
+
+.reveal.blurred .reveal-inner {
+  filter: blur(4px) grayscale(.06) saturate(.9);
+  transform: scale3d(0.96, 0.96, 1);
+  opacity: 0.9;
+  pointer-events: none; 
+  user-select: none;
+}
+
+.reveal.keep-interactive .reveal-inner {
+  pointer-events: auto;
+  user-select: auto;
+}
+
+/* 
+.reveal.blurred .reveal-inner {
+  filter: blur(2px);
+  transform: scale3d(0.985, 0.985, 1);
+}
+*/
 
 @keyframes gradientAnimation {
   0%   { background-position:   0% 50%; }
@@ -68,12 +99,24 @@ html, body{
   );
   background-size: 300% 300%;
   animation: gradientAnimation 4s linear infinite;
-  filter: blur(3px); 
-  z-index: -1;     
-  
+  filter: blur(3px);
+  z-index: -1;
+
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-inner,
+  .reveal.visible,
+  .reveal.blurred .reveal-inner {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
 }
