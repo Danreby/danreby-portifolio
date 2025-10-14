@@ -12,13 +12,13 @@ export default function NeonProfile({
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-      setPrefersReducedMotion(mq.matches)
-      const handler = () => setPrefersReducedMotion(mq.matches)
-      mq.addEventListener?.('change', handler)
-      return () => mq.removeEventListener?.('change', handler)
-    }
+    if (typeof window === 'undefined') return
+
+    const mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mqMotion.matches)
+    const onMotionChange = () => setPrefersReducedMotion(mqMotion.matches)
+    mqMotion.addEventListener?.('change', onMotionChange)
+    return () => mqMotion.removeEventListener?.('change', onMotionChange)
   }, [])
 
   const isSizeClass = typeof sizeClass === 'string' && sizeClass.trim().length > 0
@@ -44,11 +44,11 @@ export default function NeonProfile({
       className={`relative ${className} ${isSizeClass ? `${sizeClass} aspect-square` : 'flex items-center justify-center'}`}
       aria-hidden={false}
     >
-      <div className="relative rounded-full overflow-hidden w-full h-full shadow-2xl">
+      <div className="relative overflow-hidden w-full h-full shadow-2xl rounded-none sm:rounded-full">
         <img
           src={imageSrc}
           alt={alt}
-          className="w-full h-full object-cover block rounded-full"
+          className="w-full h-full object-cover block rounded-none sm:rounded-full"
           draggable={false}
         />
 
@@ -56,16 +56,14 @@ export default function NeonProfile({
           aria-hidden
           initial={false}
           whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
-          className="pointer-events-none absolute inset-0 rounded-full"
-          style={{
-            boxShadow: `0 0 40px rgba(0,0,0,0.25)`
-          }}
+          className="pointer-events-none absolute inset-0 rounded-none sm:rounded-full"
+          style={{ boxShadow: `0 0 40px rgba(0,0,0,0.25)` }}
         />
       </div>
 
       {ringColors.map((color, i) => {
-        const insetPercent = -4 - i * 3 
-        const blur = 6 + i * 6 
+        const insetPercent = -4 - i * 3
+        const blur = 6 + i * 6
         const sizeStyle = {
           top: `${insetPercent}%`,
           left: `${insetPercent}%`,
@@ -151,6 +149,7 @@ export default function NeonProfile({
         </defs>
 
         <motion.circle
+          className="hidden sm:block"
           cx="50"
           cy="50"
           r="50"
@@ -177,7 +176,7 @@ export default function NeonProfile({
       </svg>
 
       <motion.div
-        className="absolute inset-0 rounded-full pointer-events-none"
+        className="absolute inset-0 rounded-none sm:rounded-full pointer-events-none"
         initial={false}
         whileHover={prefersReducedMotion ? {} : { opacity: 1, scale: 1.02 }}
         animate={{ opacity: 0.8 }}
