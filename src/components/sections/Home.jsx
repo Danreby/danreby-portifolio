@@ -1,3 +1,4 @@
+import NeonProfile from "../common/NeonProfile";
 import { RevealOnScroll } from "../RevealOnScroll";
 
 export const Home = ({ language }) => {
@@ -48,13 +49,7 @@ export const Home = ({ language }) => {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <div className="w-96 h-96 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] overflow-hidden">
-              <img 
-                src="/danreby-portifolio/img/profile3.jpeg"
-                alt="Bernardo Santos Rolim" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <NeonProfile imageSrc="/danreby-portifolio/img/profile3.jpeg" size={384} alt="Bernardo Santos Rolim" />
           </div>
         </div>
       </RevealOnScroll>
