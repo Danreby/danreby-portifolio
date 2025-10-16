@@ -5,6 +5,7 @@ export const Home = ({ language }) => {
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
     const el = document.getElementById(sectionId);
+    console.log("🐤❤️🐻");
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -12,12 +13,12 @@ export const Home = ({ language }) => {
 
   const texts = {
     pt: {
-      subtitle: 'Explore meus projetos e saiba mais sobre mim.',
+      subtitle: 'Ao Infinito e Além 🚀',
       projects: 'Ver Projetos',
       contact: 'Me contate'
     },
     en: {
-      subtitle: 'Find out about me and my projects',
+      subtitle: 'To infinity and beyond 🚀',
       projects: 'See projects',
       contact: 'Contact Me'
     }
