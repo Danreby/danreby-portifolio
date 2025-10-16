@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
-import { FlashCard } from "../common/FlashCard";
 import SendButton from "../common/buttons/SendButton";
 
 export const Contact = ({ language }) => {
