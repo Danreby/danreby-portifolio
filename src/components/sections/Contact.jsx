@@ -11,7 +11,6 @@ export const Contact = ({ language }) => {
   });
 
   const [submitState, setSubmitState] = useState("idle");
-  const [flash, setFlash] = useState({ open: false, type: "success", message: "" });
 
   const texts = {
     pt: {
@@ -36,7 +35,7 @@ export const Contact = ({ language }) => {
     },
   };
 
-  const { title, name, email, message, send, sent, error } = texts[language] || texts.pt;
+  const { title, name, email, message } = texts[language] || texts.pt;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,14 +52,10 @@ export const Contact = ({ language }) => {
       setSubmitState("success");
       setFormData({ name: "", email: "", message: "" });
 
-      setFlash({ open: true, type: "success", message: sent });
-
       setTimeout(() => setSubmitState("idle"), 1600);
     } catch (err) {
       console.error("EmailJS send error:", err);
       setSubmitState("error");
-      setFlash({ open: true, type: "error", message: error });
-
       setTimeout(() => setSubmitState("idle"), 1600);
     }
   };
@@ -110,7 +105,7 @@ export const Contact = ({ language }) => {
             />
 
             <div className="flex justify-center">
-              <SendButton state={submitState} label={send} />
+              <SendButton state={submitState} label={texts[language]?.send ?? texts.pt.send} />
             </div>
           </form>
         </div>
