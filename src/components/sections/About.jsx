@@ -12,26 +12,26 @@ export const About = ({ language }) => {
     pt: {
       title:'Sobre mim',
       subtitle: 'Sou um jovem desenvolvedor estusiasta no mundo da programação e com um longo caminho a percorrer para alcançar meus objetivos. Minhas habilidades flutuam entre o front-end e o back-end, colocando-as em sinergia para criar aplicações e sistemas web. Minha vontade é de conseguir melhorar minhas capacidades ao maximo e me tornar o melhor de mim nos mais diversos aspectos. Atualmente cursando minha 2º pós graduação, dessa vez na PUC-RIO.',
-      formation: 'Formação',
+      formationTitle: 'Formação',
       formation1: 'Pós Graduação em Desenvolvimento Full-Stack',
       formation2: 'Graduação em Sistemas da Informação',
-      experience: 'Experiência',
+      experienceTitle: 'Experiência',
       experience1: 'Assistente de Dados I - Vix Logística (2025 - Atual)',
       role: 'Desenvolvimento de sistemas para o auxílio e otimização dos processos dos funcionários da Vix Logística, e da Petrobras',
-      course: 'Cursos',
+      courseTitle: 'Cursos',
       course1: 'Escola Técnica de Gwinnett (Curso de Inglês)',
       course2: 'Brasas English Course',
     },
     en: {
       title:'About Me',
       subtitle: 'I am a young and enthusiastic developer in the world of programming, with a long journey ahead to achieve my goals. My skills range from front-end to back-end, combining both in synergy to create web applications and systems. My goal is to continuously improve my abilities to the fullest and become the best version of myself in every possible way. Currently pursuing my second postgraduate degree, In PUC-RIO this time.',
-      formation: 'Education',
+      formationTitle: 'Education',
       formation1: 'Postgraduate Certificate in Full-Stack Development',
       formation2: 'BSc in Information Systems ',
-      experience: 'Experience',
+      experienceTitle: 'Experience',
       experience1: 'Data Assistant I - Vix Logística (2025 - Present)',
       role: 'Development of internal systems aimed at supporting and optimizing the operational workflows of employees at Vix Logística and Petrobras.',
-      course: 'Courses',
+      courseTitle: 'Courses',
       course1: 'Gwinnett Technical College (English Course)',
       course2: 'Brasas English Course',
     }
@@ -46,7 +46,7 @@ export const About = ({ language }) => {
     { name: "English",    level: 2 }
   ];
   const maxLevel = 3;
-  const { title, subtitle, formation, formation1, formation2, experience, experience1, role, course, course1, course2} = texts[language] || texts.pt
+  const { title, subtitle, formationTitle, formation1, formation2, experienceTitle, experience1, role, courseTitle, course1, course2} = texts[language] || texts.pt
   const levelsPt = ["Básico", "Intermediário", "Avançado", "Fluente"];
   const levelsEn = ["Basic", "Intermediate", "Advanced", "Fluent"];
   const languages = language === "en" ? languagesEn : languagesPt;
@@ -128,7 +128,7 @@ export const About = ({ language }) => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                   <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                      <h3 className="text-xl font-bold mb-4">🎓 {formation}</h3>
+                      <h3 className="text-xl font-bold mb-4">🎓 {formationTitle}</h3>
                       <ul className="list-disc list-inside text-gray-300 space-x-2">
                           <li>
                               <strong> {formation1} </strong> - PUC RIO (2025 - 2026)
@@ -139,7 +139,7 @@ export const About = ({ language }) => {
                       </ul>
                   </div>
                   <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                      <h3 className="text-xl font-bold mb-4">💼 {experience}</h3>
+                      <h3 className="text-xl font-bold mb-4">💼 {experienceTitle}</h3>
                       <div className="space-y-4 text-gray-300">
                           <div>
                               <h4 className="font-semibold"> {experience1} </h4>
@@ -150,7 +150,7 @@ export const About = ({ language }) => {
                       </div>
                   </div>
                   <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                      <h3 className="text-xl font-bold mb-4">📚 {course}</h3>
+                      <h3 className="text-xl font-bold mb-4">📚 {courseTitle}</h3>
                       <div className="space-y-4 text-gray-300">
                           <div>
                               <li>

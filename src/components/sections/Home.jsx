@@ -28,7 +28,7 @@ export const Home = ({ language }) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
       <RevealOnScroll>
-        <div className="mt-20 md:mt-0 w-full px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="w-full px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="text-center md:text-center">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent uppercase">
               Bernardo Santos Rolim
