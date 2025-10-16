@@ -5,7 +5,7 @@ const GRAVITY = 1800;
 const RESTITUTION = 0.6;
 const MAX_ICONS = 80;
 const LIFETIME_MS = 10000;
-const FADE_MS = 600;
+const FADE_MS = 800;
 
 function uid() { return Math.random().toString(36).slice(2, 9); }
 
@@ -13,10 +13,46 @@ function normalizeType(raw) {
   return raw || 'ReactJs';
 }
 
+function rand(min, max) { return Math.random() * (max - min) + min; }
+
+function createShardsForIcon(icon, count = 8) {
+  const shards = [];
+  const cx = 50, cy = 50, radius = 80;x
+  const angleStep = (Math.PI * 2) / count;
+  const base = rand(0, Math.PI * 2);
+  for (let i = 0; i < count; i++) {
+    const a1 = base + i * angleStep;
+    const a2 = base + (i + 1) * angleStep;
+    const p1x = cx + Math.cos(a1) * radius;
+    const p1y = cy + Math.sin(a1) * radius;
+    const p2x = cx + Math.cos(a2) * radius;
+    const p2y = cy + Math.sin(a2) * radius;
+
+    const dist = rand(30, 160) * (icon.size / 64);
+    const angle = rand(a1, a2);
+    const dx = Math.cos(angle) * dist;
+    const dy = Math.sin(angle) * dist;
+    const rot = rand(-90, 90);
+
+    const clip = `polygon(${cx}% ${cy}%, ${p1x}% ${p1y}%, ${p2x}% ${p2y}%)`;
+
+    shards.push({
+      id: uid(),
+      clipPath: clip,
+      dx,
+      dy,
+      rot,
+      delay: rand(0, FADE_MS * 0.2)
+    });
+  }
+  return shards;
+}
+
 const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
   const [icons, setIcons] = useState([]);
   const rafRef = useRef(null);
   const lastRef = useRef(performance.now());
+  const triggeredRef = useRef(new Set());
 
   useImperativeHandle(ref, () => ({
     spawn(type = 'ReactJs', pageX = window.innerWidth / 2, pageY = window.innerHeight / 4) {
@@ -43,7 +79,9 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
       grabbed: false,
       createdAt: performance.now(),
       fading: false,
-      fadingAt: null
+      fadingAt: null,
+      shards: null,
+      shattered: false
     };
   }
 
@@ -59,8 +97,8 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
 
         const next = prev.map(ic => {
           if (ic.grabbed) {
-            if (ic.fading) {
-              return { ...ic, fading: false, fadingAt: null };
+            if (ic.fading && ic.shards) {
+              return { ...ic, fading: false, fadingAt: null, shards: null, shattered: false };
             }
             return ic;
           }
@@ -77,13 +115,18 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
           const rot = ic.rot * 0.999;
 
           if (!ic.fading && (nowMs - (ic.createdAt || 0) >= LIFETIME_MS)) {
-            return { ...ic, x, y, vx, vy, rot, fading: true, fadingAt: nowMs };
+            const shards = createShardsForIcon(ic, Math.floor(rand(6, 10)));
+            return { ...ic, x, y, vx, vy, rot, fading: true, fadingAt: nowMs, shards, shattered: false };
           }
 
           return { ...ic, x, y, vx, vy, rot };
         });
 
-        return next.filter(ic => !(ic.fading && (nowMs - (ic.fadingAt || 0) >= FADE_MS)));
+        return next.filter(ic => {
+          if (!ic.fading) return true;
+          const elapsed = nowMs - (ic.fadingAt || 0);
+          return elapsed < (FADE_MS + 50);
+        });
       });
 
       rafRef.current = requestAnimationFrame(loop);
@@ -92,6 +135,20 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
     rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
+
+  useEffect(() => {
+    const needTrigger = icons.filter(ic => ic.fading && ic.shards && !ic.shattered && !triggeredRef.current.has(ic.id));
+    needTrigger.forEach(ic => {
+      triggeredRef.current.add(ic.id);
+      setTimeout(() => {
+        setIcons(prev => prev.map(p => p.id === ic.id ? { ...p, shattered: true } : p));
+        setTimeout(() => {
+          setIcons(prev => prev.filter(p => p.id !== ic.id));
+          triggeredRef.current.delete(ic.id);
+        }, FADE_MS + 20);
+      }, 20 + (ic.shards?.[0]?.delay ?? 0));
+    });
+  }, [icons]);
 
   function handlePointerDown(e, id) {
     e.stopPropagation();
@@ -108,7 +165,9 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
       _lastVX: 0,
       _lastVY: 0,
       fading: false,
-      fadingAt: null
+      fadingAt: null,
+      shards: null,
+      shattered: false
     }) : ic));
 
     function onPointerMove(ev) {
@@ -159,7 +218,7 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
             top: icon.y + 'px',
             width: icon.size + 'px',
             height: icon.size + 'px',
-            transform: `translate(-50%, -50%) rotate(${icon.rot}deg) scale(${icon.fading ? 0.75 : 1})`,
+            transform: `translate(-50%, -50%) rotate(${icon.rot}deg)`,
             touchAction: 'none',
             background: 'rgba(255,255,255,0.02)',
             display: 'flex',
@@ -167,13 +226,54 @@ const GravityTechIcons = forwardRef(function GravityTechIcons(_, ref) {
             justifyContent: 'center',
             border: '1px solid rgba(255,255,255,0.06)',
             userSelect: 'none',
-            opacity: icon.fading ? 0 : 1,
-            transition: `opacity ${FADE_MS}ms linear, transform ${FADE_MS}ms linear`
+            overflow: 'visible'
           }}
         >
-          <div style={{ width: '70%', height: '70%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="select-none pointer-events-none">
-            <TechIcon type={icon.type} size={Math.max(12, Math.floor(icon.size * 0.6))} />
-          </div>
+          {!icon.fading && (
+            <div style={{ width: '70%', height: '70%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="select-none pointer-events-none">
+              <TechIcon type={icon.type} size={Math.max(12, Math.floor(icon.size * 0.6))} />
+            </div>
+          )}
+
+          {icon.fading && icon.shards && (
+            <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+              {icon.shards.map(shard => {
+                const shattered = icon.shattered;
+                const transform = shattered
+                  ? `translate(${shard.dx}px, ${shard.dy}px) rotate(${shard.rot}deg) scale(0.6)`
+                  : `translate(0px, 0px) rotate(0deg) scale(1)`;
+
+                const opacity = shattered ? 0 : 1;
+                const transition = `transform ${FADE_MS}ms cubic-bezier(.2,.8,.2,1) ${shard.delay}ms, opacity ${FADE_MS}ms linear ${shard.delay}ms`;
+
+                return (
+                  <div
+                    key={shard.id}
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      top: 0,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      clipPath: shard.clipPath,
+                      WebkitClipPath: shard.clipPath,
+                      transform,
+                      opacity,
+                      transition,
+                      willChange: 'transform, opacity',
+                    }}
+                  >
+                    <div style={{ width: '70%', height: '70%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="select-none pointer-events-none">
+                      <TechIcon type={icon.type} size={Math.max(12, Math.floor(icon.size * 0.6))} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       ))}
     </div>
