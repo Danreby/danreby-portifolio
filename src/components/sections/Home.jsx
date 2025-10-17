@@ -5,7 +5,6 @@ export const Home = ({ language }) => {
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
     const el = document.getElementById(sectionId);
-    console.log("🐤❤️🐻");
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

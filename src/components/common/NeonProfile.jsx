@@ -37,6 +37,10 @@ export default function NeonProfile({
       delay
     }
   })
+  
+  const handleClick = () => {
+    console.log("🐤❤️🐻");
+  }
 
   return (
     <div
@@ -48,6 +52,7 @@ export default function NeonProfile({
         <img
           src={imageSrc}
           alt={alt}
+          onClick={handleClick}
           className="w-full h-full object-cover block rounded-none sm:rounded-full"
           draggable={false}
         />
