@@ -12,7 +12,7 @@ export const Home = ({ language }) => {
 
   const texts = {
     pt: {
-      subtitle: 'Ao Infinito e Além 🚀',
+      subtitle: 'Até Infinito e Além 🚀',
       projects: 'Ver Projetos',
       contact: 'Me contate'
     },
