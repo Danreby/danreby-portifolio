@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:gh": "vite build --base=/danreby-portifolio/",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:gh",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
