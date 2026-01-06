@@ -13,14 +13,14 @@ export const Projects = ({ language }) => {
                 {
                     title: 'Catálogo de Jogos',
                     description: 'Um catálogo de jogos para o gerênciamento e organização de jogos pessoais. Desenvolvido como projeto acadêmico para a conclusão do modulo de Back-End Avançado em minha 2º pós-graduação na PUC-RIO',
-                    technologies: ['ReactJS', 'Python', 'MySQL', 'Docker'],
+                    technologies: ['ReactJS', 'Python', 'FastApi', 'MySQL', 'Docker'],
                     url: 'https://youtu.be/wUAtUlpYEI4',
                 },
                 {
-                    title: 'Lista de Funcionários',
-                    description: 'Um sistema para gerenciamento de funcionários feito para a conclusão de um dos módulos da pós-graduação em Desenvolvimento Full-Stack na PUC RIO.',
-                    technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
-                    
+                    title: 'Relatório de finanças',
+                    description: 'Um site para gerênciamento de finanças pessoais. O projeto foi feito pensando inteiramente para o uso pessoal com o intuito de registrar as despesas e gerar um relatório sobre os gastos',
+                    technologies: ['Laravel', 'ReactJS', 'Tailwind', 'MySQL'],
+                    url : 'https://financialite.rolims.com'
                 },
                 {
                     title: 'Sistema de Efetivos',
@@ -54,13 +54,13 @@ export const Projects = ({ language }) => {
                 {
                     title: 'Game Catalog',
                     description: 'A games catalog for managing and organizing a personal game collection. Developed as an academic project to complete the Advanced Back-End module of my second postgraduate program at PUC-Rio.',
-                    technologies: ['ReactJS', 'Python', 'MySQL', 'Docker'],
+                    technologies: ['ReactJS', 'Python', 'FastApi', 'MySQL', 'Docker'],
                     url: 'https://youtu.be/wUAtUlpYEI4',
                 },
                 {
-                    title: 'Employee List',
-                    description: 'A system for employee management developed as part of a module for the Postgraduate Full-Stack Development program at PUC-Rio.',
-                    technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
+                    title: 'Financial Report System',
+                    description: 'A website for managing personal finances. The project was created entirely for personal use with the aim of recording expenses and generating reports on spending.',
+                    technologies: ['Laravel', 'ReactJS', 'Tailwind', 'MySQL'],
                 },
                 {
                     title: 'Staff Management System',
