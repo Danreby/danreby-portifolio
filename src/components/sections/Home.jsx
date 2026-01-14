@@ -1,5 +1,6 @@
 import NeonProfile from "../common/NeonProfile";
 import { RevealOnScroll } from "../RevealOnScroll";
+import { useTranslations } from "../../i18n/useTranslations";
 
 export const Home = ({ language }) => {
   const handleScroll = (event, sectionId) => {
@@ -10,20 +11,9 @@ export const Home = ({ language }) => {
     }
   };
 
-  const texts = {
-    pt: {
-      subtitle: 'Até Infinito e Além 🚀',
-      projects: 'Ver Projetos',
-      contact: 'Me contate'
-    },
-    en: {
-      subtitle: 'To infinity and beyond 🚀',
-      projects: 'See projects',
-      contact: 'Contact Me'
-    }
-  }
-
-  const { subtitle, projects, contact } = texts[language] || texts.pt
+  const { t } = useTranslations(language);
+  const { subtitle, projects, contact } = t("home");
+  const profileSrc = `${import.meta.env.BASE_URL}img/profile3.jpeg`;
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
@@ -58,7 +48,7 @@ export const Home = ({ language }) => {
 
           <div className="flex items-center justify-center">
             <NeonProfile
-              imageSrc="/danreby-portifolio/img/profile3.jpeg"
+              imageSrc={profileSrc}
               alt="Bernardo Santos Rolim"
               sizeClass="w-60 sm:w-48 md:w-72 lg:w-96 border-4 border-white/20 sm:p-0 rounded-none sm:rounded-full"
             />

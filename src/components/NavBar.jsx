@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { useTranslations } from "../i18n/useTranslations"
 
 
 export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
@@ -21,26 +22,8 @@ export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
             setMenuOpen(false)
         }
 
-    const texts = {
-        pt: {
-            home: 'Início',
-            about: 'Sobre',
-            projects: 'Projetos',
-            contact: 'Contato',
-            // pt: 'Português',
-            // en: 'Inglês'
-        },
-        en: {
-            home: 'Home',
-            about: 'About',
-            projects: 'Projects',
-            contact: 'Contact',
-            // pt: 'Portuguese',
-            // en: 'English'
-        }
-    }
-
-  const { home, about, projects, contact } = texts[language] || texts.pt
+    const { t } = useTranslations(language)
+    const { home, about, projects, contact } = t("navigation")
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10,10,10,0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
@@ -59,7 +42,7 @@ export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
                     <a href="#contact" onClick={e => handleScroll(e, 'find-me')} className="text-gray-300 hover:text-white transition-colors"> {contact} </a>
                     <select
                         className="text-gray-300 hover:text-white transition-colors bg-[rgba(10,10,10,0.8)]"
-                        defaultValue="pt"
+                        value={language}
                         onChange={handleLangChange}
                     >
                         <option value="pt">Português</option>

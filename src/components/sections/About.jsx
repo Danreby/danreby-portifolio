@@ -1,56 +1,32 @@
 import { useRef } from "react";
 import GravityIcons from "../common/GravityTechIcons";
 import { RevealOnScroll } from "../RevealOnScroll";
+import { useTranslations } from "../../i18n/useTranslations";
 
 export const About = ({ language }) => {
 
   const frontendSkills = ["ReactJS", "Vue.js", "JavaScript", "Tailwind CSS", "Bootstrap"];
   const backendSkills = ["Laravel", "PHP", "Docker", "MySQL", "SQLServer", "Python"];
   const gravityRef = useRef();
-  
-  const texts = {
-    pt: {
-      title:'Sobre mim',
-      subtitle: 'Sou um jovem desenvolvedor estusiasta no mundo da programação e com um longo caminho a percorrer para alcançar meus objetivos. Minhas habilidades flutuam entre o front-end e o back-end, colocando-as em sinergia para criar aplicações e sistemas web. Minha vontade é de conseguir melhorar minhas capacidades ao maximo e me tornar o melhor de mim nos mais diversos aspectos. Atualmente cursando minha 2º pós graduação, dessa vez na PUC-RIO.',
-      formationTitle: 'Formação',
-      formation1: 'Pós Graduação em Desenvolvimento Full-Stack',
-      formation2: 'Graduação em Sistemas da Informação',
-      experienceTitle: 'Experiência',
-      experience1: 'Assistente de Dados I - Vix Logística (2025 - 2026)',
-      role: 'Desenvolvimento de sistemas para o auxílio e otimização dos processos dos funcionários da Vix Logística, e da Petrobras',
-      courseTitle: 'Cursos',
-      course1: 'Escola Técnica de Gwinnett (Curso de Inglês)',
-      course2: 'Brasas English Course',
-    },
-    en: {
-      title:'About Me',
-      subtitle: 'I am a young and enthusiastic developer in the world of programming, with a long journey ahead to achieve my goals. My skills range from front-end to back-end, combining both in synergy to create web applications and systems. My goal is to continuously improve my abilities to the fullest and become the best version of myself in every possible way. Currently pursuing my second postgraduate degree, In PUC-RIO this time.',
-      formationTitle: 'Education',
-      formation1: 'Postgraduate Certificate in Full-Stack Development',
-      formation2: 'BSc in Information Systems ',
-      experienceTitle: 'Experience',
-      experience1: 'Data Assistant I - Vix Logística (2025 - 2026)',
-      role: 'Development of internal systems aimed at supporting and optimizing the operational workflows of employees at Vix Logística and Petrobras.',
-      courseTitle: 'Courses',
-      course1: 'Gwinnett Technical College (English Course)',
-      course2: 'Brasas English Course',
-    }
-  }
-
-  const languagesPt = [
-    { name: "Português", level: 3 },
-    { name: "Inglês",   level: 2 }
-  ];
-  const languagesEn = [
-    { name: "Portuguese", level: 3 },
-    { name: "English",    level: 2 }
-  ];
+  const { t } = useTranslations(language);
+  const aboutTexts = t("about");
+  const {
+    title,
+    subtitle,
+    formationTitle,
+    formation1,
+    formation2,
+    experienceTitle,
+    experience1,
+    role,
+    courseTitle,
+    course1,
+    course2,
+    languages: languageLevels = [],
+    levels = [],
+  } = aboutTexts;
   const maxLevel = 3;
-  const { title, subtitle, formationTitle, formation1, formation2, experienceTitle, experience1, role, courseTitle, course1, course2} = texts[language] || texts.pt
-  const levelsPt = ["Básico", "Intermediário", "Avançado", "Fluente"];
-  const levelsEn = ["Basic", "Intermediate", "Advanced", "Fluent"];
-  const languages = language === "en" ? languagesEn : languagesPt;
-  const levels    = language === "en" ? levelsEn    : levelsPt;
+  const languages = languageLevels;
 
   return (
     <>

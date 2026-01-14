@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
 import SendButton from "../common/buttons/SendButton";
+import { useTranslations } from "../../i18n/useTranslations";
 
 export const Contact = ({ language }) => {
   const [formData, setFormData] = useState({
@@ -12,30 +13,9 @@ export const Contact = ({ language }) => {
 
   const [submitState, setSubmitState] = useState("idle");
 
-  const texts = {
-    pt: {
-      title: "Entre em Contato",
-      name: "Seu Nome",
-      email: "example@gmail.com",
-      message: "Sua Mensagem",
-      send: "Enviar",
-      sending: "Enviando...",
-      sent: "Mensagem enviada com sucesso!",
-      error: "Erro ao enviar a mensagem. Tente novamente mais tarde.",
-    },
-    en: {
-      title: "Get in Touch",
-      name: "Your Name",
-      email: "example@hotmail.com",
-      message: "Your Message",
-      send: "Send",
-      sending: "Sending...",
-      sent: "Message sent successfully!",
-      error: "Error sending message. Try again later.",
-    },
-  };
-
-  const { title, name, email, message } = texts[language] || texts.pt;
+  const { t } = useTranslations(language);
+  const contactTexts = t("contact");
+  const { title, name, email, message } = contactTexts;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,7 +85,7 @@ export const Contact = ({ language }) => {
             />
 
             <div className="flex justify-center">
-              <SendButton state={submitState} label={texts[language]?.send ?? texts.pt.send} />
+              <SendButton state={submitState} label={contactTexts.send} />
             </div>
           </form>
         </div>

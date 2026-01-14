@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useTranslations } from "../i18n/useTranslations";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen, setLanguage, language }) => {
 
@@ -16,26 +16,8 @@ export const MobileMenu = ({ menuOpen, setMenuOpen, setLanguage, language }) => 
             setMenuOpen(false)
         }
 
-    const texts = {
-        pt: {
-            home: 'Início',
-            about: 'Sobre',
-            projects: 'Projetos',
-            contact: 'Contato',
-            // pt: 'Português',
-            // en: 'Inglês'
-        },
-        en: {
-            home: 'Home',
-            about: 'About',
-            projects: 'Projects',
-            contact: 'Contact',
-            // pt: 'Portuguese',
-            // en: 'English'
-        }
-    }
-
-    const { home, about, projects, contact } = texts[language] || texts.pt
+    const { t } = useTranslations(language)
+    const { home, about, projects, contact } = t("navigation")
 
   return (
     <div
@@ -61,7 +43,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen, setLanguage, language }) => 
             ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}> {contact} </a>
         <select className={`bg-transparent text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} `}
-          defaultValue="pt"
+          value={language}
           onChange={handleLangChange}
         >
           <option className="bg-[rgba(10,10,10,0.8)] text-white" value="pt" > Português </option>

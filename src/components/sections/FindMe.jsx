@@ -1,6 +1,7 @@
 import React from 'react';
 import { RevealOnScroll } from '../RevealOnScroll';
 import '../../index.css'; // Ensure styles are imported
+import { useTranslations } from '../../i18n/useTranslations';
 
 export const FindMe = ({ language }) => {
   const socials = [
@@ -42,18 +43,8 @@ export const FindMe = ({ language }) => {
     },
   ];
 
-  const texts = {
-    pt: {
-      title: 'Encontre-me nas redes',
-
-    },
-    en: {
-      title: 'Find me on the webs',
-
-    }
-  }
-
-  const { title } = texts[language] || texts.pt
+  const { t } = useTranslations(language);
+  const { title } = t('findMe');
 
   return (
     <section id="find-me" className="min-h-screen flex items-center justify-center py-20">

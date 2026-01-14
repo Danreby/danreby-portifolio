@@ -1,96 +1,14 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import { Overview } from "../system/modal/Overview";
+import { useTranslations } from "../../i18n/useTranslations";
 
 export const Projects = ({ language }) => {
     const [selected, setSelected] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
-    const texts = {
-        pt: {
-            title: 'Projetos',
-            projects: [
-                {
-                    title: 'Catálogo de Jogos',
-                    description: 'Um catálogo de jogos para o gerênciamento e organização de jogos pessoais. Desenvolvido como projeto acadêmico para a conclusão do modulo de Back-End Avançado em minha 2º pós-graduação na PUC-RIO',
-                    technologies: ['ReactJS', 'Python', 'FastApi', 'MySQL', 'Docker'],
-                    url: 'https://youtu.be/wUAtUlpYEI4',
-                },
-                {
-                    title: 'Relatório de finanças',
-                    description: 'Um site para gerênciamento de finanças pessoais. O projeto foi feito pensando inteiramente para o uso pessoal com o intuito de registrar as despesas e gerar um relatório sobre os gastos',
-                    technologies: ['Laravel', 'ReactJS', 'Tailwind', 'MySQL'],
-                    url : 'https://financialite.rolims.com'
-                },
-                {
-                    title: 'Sistema de Efetivos',
-                    description: 'Um sistema para o gerenciamento dos efetivos da Vix Logística, feito para o gerenciamento e monitoramento das informações necessárias para a administração dos funcionários da empresa.',
-                    technologies: ['ReactJS', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Efetivo/pt/1.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/2.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/3.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/4.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/5.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/6.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/7.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/8.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/9.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/10.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/11.jpeg',
-                        '/danreby-portifolio/img/Efetivo/pt/12.jpeg',
-                    ],
-                },
-                {
-                    title: 'Sistema de Avaliações',
-                    description: 'Um sistema de avaliações de serviços prestados de uma empresa terceirizada da Petrobras, com o intuito de ajudar no processo de avaliações de funcionários.',
-                    technologies: ['Filament', 'Laravel', 'MySQL'],
-                }
-            ]
-        },
-        en: {
-            title: 'Projects',
-            projects: [
-                {
-                    title: 'Game Catalog',
-                    description: 'A games catalog for managing and organizing a personal game collection. Developed as an academic project to complete the Advanced Back-End module of my second postgraduate program at PUC-Rio.',
-                    technologies: ['ReactJS', 'Python', 'FastApi', 'MySQL', 'Docker'],
-                    url: 'https://youtu.be/wUAtUlpYEI4',
-                },
-                {
-                    title: 'Financial Report System',
-                    description: 'A website for managing personal finances. The project was created entirely for personal use with the aim of recording expenses and generating reports on spending.',
-                    technologies: ['Laravel', 'ReactJS', 'Tailwind', 'MySQL'],
-                },
-                {
-                    title: 'Staff Management System',
-                    description: 'A system for managing Vix Logística\'s staff, built to manage and monitor essential information for employee administration within the company.',
-                    technologies: ['ReactJS', 'Laravel', 'MySQL'],
-                    images: [
-                        '/danreby-portifolio/img/Efetivo/en/1.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/2.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/3.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/4.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/5.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/6.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/7.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/8.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/9.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/10.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/11.jpg',
-                        '/danreby-portifolio/img/Efetivo/en/12.jpg',
-                    ],
-                },
-                {
-                    title: 'Evaluation System',
-                    description: 'A service evaluation system for a Petrobras subcontractor, aimed at streamlining the employee evaluation process.',
-                    technologies: ['Filament', 'Laravel', 'MySQL'],
-                }
-            ]
-        }
-    };
-
-    const { title, projects } = texts[language] || texts.pt;
+    const { t } = useTranslations(language);
+    const { title, projects: projectItems = [] } = t("projects");
 
     const openOverview = (project) => {
         if (project.images && project.images.length > 0) {
@@ -120,7 +38,7 @@ export const Projects = ({ language }) => {
                         {title}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {projects.map((project, index) => (
+                        {projectItems.map((project, index) => (
                             <div
                             key={index}
                             className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50
