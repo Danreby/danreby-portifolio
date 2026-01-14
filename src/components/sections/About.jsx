@@ -17,8 +17,7 @@ export const About = ({ language }) => {
     formation1,
     formation2,
     experienceTitle,
-    experience1,
-    role,
+    experiences = [],
     courseTitle,
     course1,
     course2,
@@ -102,43 +101,43 @@ export const About = ({ language }) => {
                   ))}
                   </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                  <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                      <h3 className="text-xl font-bold mb-4">🎓 {formationTitle}</h3>
-                      <ul className="list-disc list-inside text-gray-300 space-x-2">
-                          <li>
-                              <strong> {formation1} </strong> - PUC RIO (2025 - 2026)
-                          </li>
-                          <li>
-                              <strong> {formation2} </strong> - Uni São José (2021 - 2024)
-                          </li>
-                      </ul>
-                  </div>
-                  <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                  <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all md:col-span-2">
                       <h3 className="text-xl font-bold mb-4">💼 {experienceTitle}</h3>
-                      <div className="space-y-4 text-gray-300">
-                          <div>
-                              <h4 className="font-semibold"> {experience1} </h4>
-                              <p>
-                                  {role}
-                              </p>
-                          </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+                          {experiences.map((exp, idx) => (
+                            <div key={idx} className="space-y-1">
+                              <h4 className="font-semibold"> {exp.title} </h4>
+                              {exp.role && <p>{exp.role}</p>}
+                            </div>
+                          ))}
                       </div>
                   </div>
                   <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-                      <h3 className="text-xl font-bold mb-4">📚 {courseTitle}</h3>
-                      <div className="space-y-4 text-gray-300">
-                          <div>
-                              <li>
-                                  <strong> {course1} </strong> - (05/2024 - 08/2024)
-                              </li>
-                              <li>
-                                  <strong> {course2} </strong> - (01/2023 - 04/2024)
-                              </li>
-                          </div>
-                      </div>
+                    <h3 className="text-xl font-bold mb-4">🎓 {formationTitle}</h3>
+                    <ul className="list-disc list-inside text-gray-300 space-x-2">
+                      <li>
+                        <strong> {formation1} </strong> - PUC RIO (2025 - 2026)
+                      </li>
+                      <li>
+                        <strong> {formation2} </strong> - Uni São José (2021 - 2024)
+                      </li>
+                    </ul>
                   </div>
-              </div>
+                  <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
+                    <h3 className="text-xl font-bold mb-4">📚 {courseTitle}</h3>
+                    <div className="space-y-4 text-gray-300">
+                      <div>
+                        <li>
+                          <strong> {course1} </strong> - (05/2024 - 08/2024)
+                        </li>
+                        <li>
+                          <strong> {course2} </strong> - (01/2023 - 04/2024)
+                        </li>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           </div>
         </RevealOnScroll>
       </section>

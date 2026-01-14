@@ -38,9 +38,18 @@ const about = {
     formation1: "Pós Graduação em Desenvolvimento Full-Stack",
     formation2: "Graduação em Sistemas da Informação",
     experienceTitle: "Experiência",
-    experience1: "Assistente de Dados I - Vix Logística (2025 - 2026)",
-    role:
-      "Desenvolvimento de sistemas para o auxílio e otimização dos processos dos funcionários da Vix Logística, e da Petrobras",
+    experiences: [
+      {
+        title: "Desenvolvedor Junior - West Group (2026 - atual)",
+        role: "Desenvolvimento de sistemas responsivos para a West Group e seus clientes.",
+
+      },
+      {
+        title: "Assistente de Dados I - Vix Logística (2025 - 2026)",
+        role:
+          "Desenvolvimento de sistemas para o auxílio e otimização dos processos dos funcionários da Vix Logística, e da Petrobras",
+      },
+    ],
     courseTitle: "Cursos",
     course1: "Escola Técnica de Gwinnett (Curso de Inglês)",
     course2: "Brasas English Course",
@@ -58,9 +67,17 @@ const about = {
     formation1: "Postgraduate Certificate in Full-Stack Development",
     formation2: "BSc in Information Systems ",
     experienceTitle: "Experience",
-    experience1: "Data Assistant I - Vix Logística (2025 - 2026)",
-    role:
-      "Development of internal systems aimed at supporting and optimizing the operational workflows of employees at Vix Logística and Petrobras.",
+    experiences: [
+      {
+        title: "Junior Developer - West Group (2026 - present)",
+        role: "Development of responsive systems for various clients.",
+      },
+      {
+        title: "Data Assistant I - Vix Logística (2025 - 2026)",
+        role:
+          "Development of internal systems aimed at supporting and optimizing the operational workflows of employees at Vix Logística and Petrobras.",
+      },
+    ],
     courseTitle: "Courses",
     course1: "Gwinnett Technical College (English Course)",
     course2: "Brasas English Course",
