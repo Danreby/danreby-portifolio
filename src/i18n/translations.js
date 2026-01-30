@@ -40,7 +40,7 @@ const about = {
     experienceTitle: "Experiência",
     experiences: [
       {
-        title: "Desenvolvedor Junior - West Group (2026 - atual)",
+        title: "Analista de Sistemas - West Group (2026 - atual)",
         role: "Desenvolvimento de sistemas responsivos para a West Group e seus clientes.",
 
       },
@@ -69,7 +69,7 @@ const about = {
     experienceTitle: "Experience",
     experiences: [
       {
-        title: "Junior Developer - West Group (2026 - present)",
+        title: "Systems Analyst - West Group (2026 - present)",
         role: "Development of responsive systems for various clients.",
       },
       {
