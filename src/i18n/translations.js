@@ -56,6 +56,7 @@ const about = {
     languages: [
       { name: "Português", level: 3 },
       { name: "Inglês", level: 2 },
+      { name: "Japonês", level: 0 },
     ],
     levels: ["Básico", "Intermediário", "Avançado", "Fluente"],
   },
@@ -84,6 +85,7 @@ const about = {
     languages: [
       { name: "Portuguese", level: 3 },
       { name: "English", level: 2 },
+      { name: "Japanese", level: 0 },
     ],
     levels: ["Basic", "Intermediate", "Advanced", "Fluent"],
   },
