@@ -46,13 +46,19 @@ export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
           </a>
 
           <button
-            className="w-7 h-5 relative cursor-pointer z-40 md:hidden flex flex-col justify-between group"
+            className="w-7 h-5 relative cursor-pointer z-40 md:hidden"
             onClick={() => setMenuOpen(prev => !prev)}
             aria-label="Toggle menu"
           >
-            <span className={`block h-0.5 bg-white rounded-full transition-all duration-300 origin-left ${menuOpen ? 'rotate-[36deg] translate-x-[3px]' : ''}`} />
-            <span className={`block h-0.5 bg-white rounded-full transition-all duration-300 ${menuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`block h-0.5 bg-white rounded-full transition-all duration-300 origin-left ${menuOpen ? '-rotate-[36deg] translate-x-[3px]' : ''}`} />
+            <span className={`absolute left-0 right-0 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${
+              menuOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'
+            }`} />
+            <span className={`absolute left-0 right-0 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out top-1/2 -translate-y-1/2 ${
+              menuOpen ? 'opacity-0 scale-x-0' : 'opacity-100'
+            }`} />
+            <span className={`absolute left-0 right-0 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${
+              menuOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'
+            }`} />
           </button>
 
           <div className="hidden md:flex items-center gap-8">
