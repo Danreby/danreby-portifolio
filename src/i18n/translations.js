@@ -216,6 +216,7 @@ const projects = {
 const contact = {
   pt: {
     title: "Entre em Contato",
+    description: "Tem um projeto em mente? Vamos conversar. Estou sempre aberto a novas oportunidades e colaborações.",
     name: "Seu Nome",
     email: "example@gmail.com",
     message: "Sua Mensagem",
@@ -226,6 +227,7 @@ const contact = {
   },
   en: {
     title: "Get in Touch",
+    description: "Have a project in mind? Let's talk. I'm always open to new opportunities and collaborations.",
     name: "Your Name",
     email: "example@hotmail.com",
     message: "Your Message",
