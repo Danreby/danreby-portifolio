@@ -5,50 +5,63 @@ export const MobileMenu = ({ menuOpen, setMenuOpen, setLanguage, language }) => 
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
     const el = document.getElementById(sectionId);
-    if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setMenuOpen(false);
   };
 
-  const handleLangChange = (e) => {
-            setLanguage(e.target.value)
-            setMenuOpen(false)
-        }
+  const { t } = useTranslations(language);
+  const { home, about, projects, contact } = t("navigation");
 
-    const { t } = useTranslations(language)
-    const { home, about, projects, contact } = t("navigation")
+  const links = [
+    { label: home, id: 'home' },
+    { label: about, id: 'about' },
+    { label: projects, id: 'projects' },
+    { label: contact, id: 'find-me' },
+  ];
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full bg-black z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out 
-        ${menuOpen
-          ? "h-screen opacity-100 pointer-events-auto"
-          : "h-0 opacity-0 pointer-events-none"
-      }`}
+      className={`fixed inset-0 z-30 flex flex-col items-center justify-center transition-all duration-300 ease-in-out
+        ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+      style={{ background: 'rgba(8, 8, 12, 0.97)', backdropFilter: 'blur(24px)' }}
     >
-      <button onClick={() => setMenuOpen(false)} className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer"
-        aria-label="Close Menu" title="Close Menu"
-        >
-        &times;
-      </button>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        <a href="#home"  onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}> {home} </a>
-        <a href="#about"  onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}> {about} </a>
-        <a href="#projects"  onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}> {projects} </a>
-        <a href="#find-me"  onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}> {contact} </a>
-        <select className={`bg-transparent text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} `}
-          value={language}
-          onChange={handleLangChange}
-        >
-          <option className="bg-[rgba(10,10,10,0.8)] text-white" value="pt" > Português </option>
-          <option className="bg-[rgba(10,10,10,0.8)] text-white" value="en" > English </option>
-        </select>
+      <nav className="flex flex-col items-center gap-7 z-10">
+        {links.map(({ label, id }, i) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            onClick={e => handleScroll(e, id)}
+            className={`text-2xl font-semibold text-white hover:text-blue-400 transition-all duration-300
+              ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
+          >
+            {label}
+          </a>
+        ))}
+
+      <div className={`mt-2 flex gap-3 transition-all duration-300
+          ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        style={{ transitionDelay: menuOpen ? '260ms' : '0ms' }}
+      >
+          {['pt', 'en'].map((lang) => (
+            <button
+              key={lang}
+              onClick={() => { setLanguage(lang); setMenuOpen(false); }}
+              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-200
+                ${language === lang
+                  ? 'bg-blue-600 text-white shadow-[0_0_10px_rgba(59,130,246,0.2)]'
+                  : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
+                }`}
+            >
+              {lang === 'pt' ? 'Português' : 'English'}
+            </button>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 };
+

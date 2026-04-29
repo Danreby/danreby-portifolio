@@ -16,12 +16,10 @@ export const Projects = ({ language }) => {
             setIsOpen(true);
             return;
         }
-
         if (project.url) {
             window.open(project.url, "_blank", "noopener,noreferrer");
             return;
         }
-
         setSelected({ ...project, language });
         setIsOpen(true);
     };
@@ -31,46 +29,56 @@ export const Projects = ({ language }) => {
     };
 
     return (
-        <section id="projects" className="min-h-screen flex items-center justify-center py-20">
+        <section id="projects" className="min-h-screen flex items-center justify-center py-24 relative overflow-hidden">
+            <div className="absolute bottom-1/3 -left-20 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+
             <RevealOnScroll>
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-                        {title}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent mb-2">
+                            {title}
+                        </h2>
+                        <div className="glow-divider" />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {projectItems.map((project, index) => (
                             <div
-                            key={index}
-                            className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.2)] transition-all bg-gray-800/50
-                                        flex flex-col justify-between h-full" 
+                                key={index}
+                                className="project-card glass-card rounded-2xl p-6 flex flex-col justify-between h-full"
                             >
-                                <div>
-                                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                                    <p className="text-gray-300 mb-4 break-words">{project.description}</p>
-                                </div>
-
-                                <div>
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.technologies.map((tech, key) => (
-                                        <span
-                                        key={key}
-                                        className="bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition-all"
-                                        >
-                                        {tech}
-                                        </span>
-                                    ))}
-                                    </div>
-
-                                    <div className="flex justify-between items-center">
+                                <div className="flex items-start justify-between mb-4">
+                                    <span className="font-mono text-xs text-gray-600 bg-white/5 border border-white/5 px-2 py-0.5 rounded-md">
+                                        {String(index + 1).padStart(2, '0')}
+                                    </span>
                                     {(project.images?.length > 0 || project.url) && (
                                         <button
-                                        onClick={() => openOverview(project)}
-                                        className="text-blue-400 hover:text-blue-300 transition-colors"
+                                            onClick={() => openOverview(project)}
+                                            className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-400 transition-colors group/btn"
                                         >
-                                        {language === "pt" ? "Ver Projeto ➜" : "View Project ➜"}
+                                            {language === "pt" ? "Ver projeto" : "View project"}
+                                            <svg className="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                            </svg>
                                         </button>
                                     )}
-                                    </div>
+                                </div>
+
+                                <div className="flex-1">
+                                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-300 transition-colors">{project.title}</h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed mb-4 break-words">{project.description}</p>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
+                                    {project.technologies.map((tech, key) => (
+                                        <span
+                                            key={key}
+                                            className="bg-blue-500/8 text-blue-400 px-2.5 py-0.5 rounded-full text-xs border border-blue-500/15 hover:bg-blue-500/15 transition-all select-none"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
                         ))}

@@ -10,6 +10,7 @@ import { Projects } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
 import { FindMe } from "./components/sections/FindMe";
 import SnakeLinesBackground from "./components/common/SnakeLinesBackground";
+import { FloatingCodeSnippets } from "./components/common/FloatingCodeSnippets";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,9 +23,10 @@ function App() {
       <div
         className={`min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
-        } bg-black text-gray-100 relative`}
+        } bg-black text-gray-100 relative overflow-x-hidden`}
       >
         <SnakeLinesBackground/>
+        <FloatingCodeSnippets />
         <div className="relative z-10">
           <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} setLanguage={setLanguage} language={language}/>
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} setLanguage={setLanguage} language={language}/>
