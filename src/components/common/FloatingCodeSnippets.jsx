@@ -6,9 +6,9 @@ const snippets = [
   { text: '<Developer />',           color: 'cyan',   topFrac: 0.62, left: '13%', dur: 52, delay: 17, hideOnMobile: false, speed: 0.18 },
   { text: 'npm run dev',             color: 'green',  topFrac: 0.50, left: '75%', dur: 78, delay: 4,  hideOnMobile: true,  speed: 0.08 },
   { text: 'docker compose up',       color: 'orange', topFrac: 0.30, left: '43%', dur: 64, delay: 23, hideOnMobile: false, speed: 0.32 },
-  { text: 'return <UI />',           color: 'pink',   topFrac: 0.75, left: '57%', dur: 57, delay: 13, hideOnMobile: false, speed: 0.14 },
+  { text: 'E além 🐣',           color: 'pink',   topFrac: 0.75, left: '57%', dur: 57, delay: 13, hideOnMobile: false, speed: 0.14 },
   { text: 'git push origin main',    color: 'blue',   topFrac: 0.42, left: '88%', dur: 68, delay: 30, hideOnMobile: true,  speed: 0.22 },
-  { text: 'SELECT * FROM projects',  color: 'cyan',   topFrac: 0.88, left: '2%',  dur: 82, delay: 7,  hideOnMobile: false, speed: 0.10 },
+  { text: 'Até o infinito',  color: 'cyan',   topFrac: 0.88, left: '2%',  dur: 82, delay: 7,  hideOnMobile: false, speed: 0.10 },
 ];
 
 const allEntries = snippets.flatMap((s, si) => [
