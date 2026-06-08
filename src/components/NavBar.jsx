@@ -3,13 +3,29 @@ import { useTranslations } from "../i18n/useTranslations"
 
 export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      const sectionIds = ['home', 'about', 'projects', 'find-me'];
+      const threshold = window.innerHeight * 0.35;
+      let current = 'home';
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= threshold) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -72,7 +88,11 @@ export const NavBar = ({menuOpen, setMenuOpen, setLanguage, language}) => {
                 key={id}
                 href={`#${id}`}
                 onClick={e => handleScroll(e, id)}
-                className="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium"
+                className={`nav-link text-sm font-medium transition-colors ${
+                  activeSection === id
+                    ? 'nav-link-active'
+                    : 'text-gray-400 hover:text-white'
+                }`}
               >
                 {label}
               </a>

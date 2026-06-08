@@ -18,11 +18,15 @@ const navigation = {
 
 const home = {
   pt: {
+    role: "Desenvolvedor Full-Stack",
+    // available: "Disponível para trabalhar",
     subtitle: "Até Infinito e Além 🚀",
     projects: "Ver Projetos",
     contact: "Me contate",
   },
   en: {
+    role: "Full-Stack Developer",
+    // available: "Available to work",
     subtitle: "To infinity and beyond 🚀",
     projects: "See projects",
     contact: "Contact Me",

@@ -39,30 +39,44 @@ export const About = ({ language }) => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div className="text-center mb-10">
+              <span className="section-mono-label">// about</span>
               <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent mb-2">
                 {title}
               </h2>
               <div className="glow-divider" />
             </div>
 
-            <div className="glass-card rounded-2xl p-7 mb-5">
-              <p className="text-gray-300 leading-relaxed">
+            <div className="glass-card rounded-2xl p-7 mb-5 relative overflow-hidden">
+              <div className="absolute top-4 right-5 text-7xl font-serif text-blue-500/6 select-none pointer-events-none leading-none">"</div>
+              <p className="text-gray-300 leading-relaxed relative z-10">
                 {subtitle}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
               {[
-                { heading: 'Front-End', skills: frontendSkills },
-                { heading: 'Back-End', skills: backendSkills },
-              ].map(({ heading, skills }) => (
+                {
+                  heading: 'Front-End',
+                  skills: frontendSkills,
+                  color: 'blue',
+                  tagClass: 'bg-blue-500/10 text-blue-400 border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/45 hover:text-blue-300',
+                  headingClass: 'text-blue-400/70',
+                },
+                {
+                  heading: 'Back-End',
+                  skills: backendSkills,
+                  color: 'purple',
+                  tagClass: 'bg-purple-500/10 text-purple-400 border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/45 hover:text-purple-300',
+                  headingClass: 'text-purple-400/70',
+                },
+              ].map(({ heading, skills, tagClass, headingClass }) => (
                 <div key={heading} className="glass-card rounded-2xl p-6">
-                  <h3 className="text-base font-bold mb-4 text-gray-200 tracking-wide">{heading}</h3>
+                  <h3 className={`text-xs font-mono font-bold mb-4 tracking-widest uppercase ${headingClass}`}>{heading}</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((tech) => (
                       <span
                         key={tech}
-                        className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/40 hover:-translate-y-0.5 transition-all cursor-pointer select-none"
+                        className={`px-3 py-1 rounded-full text-sm border hover:-translate-y-0.5 transition-all cursor-pointer select-none ${tagClass}`}
                         onClick={(e) => {
                           gravityRef.current?.spawn(tech === 'JavaScript' ? 'JS' : tech, e.clientX, e.clientY);
                         }}
@@ -76,7 +90,7 @@ export const About = ({ language }) => {
             </div>
 
             <div className="glass-card rounded-2xl p-6 mb-5">
-              <h3 className="text-base font-bold mb-6 text-gray-200 tracking-wide">
+              <h3 className="text-xs font-mono font-bold mb-6 text-cyan-400/70 tracking-widest uppercase">
                 {language === "en" ? "Languages" : "Idiomas"}
               </h3>
               <div className="space-y-7">
@@ -118,8 +132,9 @@ export const About = ({ language }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
               <div className="glass-card rounded-2xl p-6 md:col-span-2">
-                <h3 className="text-base font-bold mb-5 text-gray-200 tracking-wide flex items-center gap-2">
-                  <span>💼</span> {experienceTitle}
+                <h3 className="text-xs font-mono font-bold mb-5 text-cyan-400/70 tracking-widest uppercase flex items-center gap-2">
+                  <span className="w-4 h-4 flex items-center justify-center text-base">💼</span>
+                  {experienceTitle}
                 </h3>
                 <div className="space-y-5">
                   {experiences.map((exp, idx) => (
@@ -132,8 +147,9 @@ export const About = ({ language }) => {
               </div>
 
               <div className="glass-card rounded-2xl p-6">
-                <h3 className="text-base font-bold mb-5 text-gray-200 tracking-wide flex items-center gap-2">
-                  <span>🎓</span> {formationTitle}
+                <h3 className="text-xs font-mono font-bold mb-5 text-cyan-400/70 tracking-widest uppercase flex items-center gap-2">
+                  <span className="w-4 h-4 flex items-center justify-center text-base">🎓</span>
+                  {formationTitle}
                 </h3>
                 <div className="space-y-5">
                   <div className="timeline-item">
@@ -148,8 +164,9 @@ export const About = ({ language }) => {
               </div>
 
               <div className="glass-card rounded-2xl p-6">
-                <h3 className="text-base font-bold mb-5 text-gray-200 tracking-wide flex items-center gap-2">
-                  <span>📚</span> {courseTitle}
+                <h3 className="text-xs font-mono font-bold mb-5 text-cyan-400/70 tracking-widest uppercase flex items-center gap-2">
+                  <span className="w-4 h-4 flex items-center justify-center text-base">📚</span>
+                  {courseTitle}
                 </h3>
                 <div className="space-y-5">
                   <div className="timeline-item">

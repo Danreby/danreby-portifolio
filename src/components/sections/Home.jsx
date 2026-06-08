@@ -10,7 +10,7 @@ export const Home = ({ language }) => {
   };
 
   const { t } = useTranslations(language);
-  const { subtitle, projects, contact } = t("home");
+  const { role, subtitle, projects, contact } = t("home");
   const profileSrc = `${import.meta.env.BASE_URL}img/profile3.jpeg`;
 
   return (
@@ -20,21 +20,34 @@ export const Home = ({ language }) => {
       <div className="absolute bottom-24 -right-24 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/3 rounded-full blur-3xl pointer-events-none" />
 
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10 pointer-events-none">
+        <span className="text-xs font-mono tracking-widest text-gray-700 uppercase">scroll</span>
+        <svg className="w-4 h-4 text-gray-700 animate-bounce-down" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+
       <RevealOnScroll>
         <div className="w-full px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl">
 
           <div className="text-center md:text-left order-2 md:order-1">
 
-            {/* <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-mono">
-              <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse-glow" />
-              {language === 'pt' ? 'Disponível para trabalhar' : 'Available to work'}
+            {/* <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full bg-green-500/8 border border-green-500/20 text-green-400 text-xs font-mono tracking-wide">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse-dot shrink-0" />
+              {available}
             </div> */}
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight">
               <span className="hero-name-text">Bernardo</span>
               <br />
               <span className="text-white">Santos Rolim</span>
             </h1>
+
+            <div className="hero-role-tag md:justify-start justify-center flex">
+              <span className="text-blue-500 select-none">{'<'}</span>
+              <span className="mx-1.5">{role}</span>
+              <span className="text-blue-500 select-none">{'/>'}</span>
+            </div>
 
             <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-5 md:mx-0 mx-auto" />
 
@@ -46,7 +59,7 @@ export const Home = ({ language }) => {
               <a
                 href="#projects"
                 onClick={e => handleScroll(e, 'projects')}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 px-7 rounded-xl font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(59,130,246,0.45)]"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 px-7 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(59,130,246,0.5)] hover:from-blue-500 hover:to-blue-400"
               >
                 {projects}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,7 +70,7 @@ export const Home = ({ language }) => {
               <a
                 href="#find-me"
                 onClick={e => handleScroll(e, 'find-me')}
-                className="inline-flex items-center gap-2 border border-blue-500/40 text-blue-400 py-3 px-7 rounded-xl font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(59,130,246,0.15)] hover:bg-blue-500/10 hover:border-blue-500/60"
+                className="inline-flex items-center gap-2 border border-blue-500/40 text-blue-400 py-3 px-7 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(59,130,246,0.2)] hover:bg-blue-500/10 hover:border-blue-400/60 hover:text-blue-300"
               >
                 {contact}
               </a>
