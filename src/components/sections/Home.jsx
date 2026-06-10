@@ -20,12 +20,12 @@ export const Home = ({ language }) => {
       <div className="absolute bottom-24 -right-24 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/3 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10 pointer-events-none">
+      {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10 pointer-events-none">
         <span className="text-xs font-mono tracking-widest text-gray-700 uppercase">scroll</span>
         <svg className="w-4 h-4 text-gray-700 animate-bounce-down" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
         </svg>
-      </div>
+      </div> */}
 
       <RevealOnScroll>
         <div className="w-full px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl">
