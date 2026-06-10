@@ -50,7 +50,7 @@ export const Contact = ({ language }) => {
 
               <div className="flex flex-col gap-6">
                 <div>
-                  <span className="section-mono-label">// contact</span>
+                  {/* <span className="section-mono-label">// contact</span> */}
                   <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent mb-3">
                     {title}
                   </h2>
